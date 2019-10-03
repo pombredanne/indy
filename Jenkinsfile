@@ -26,7 +26,7 @@ pipeline {
             when { branch 'master' }
             steps {
                 echo "Deploy"
-                sh 'mvn help:effective-settings -B -V deploy -e -s ~/sonatype/settings.xml'
+                sh 'mvn help:effective-settings -B -V deploy -e'
             }
         }
         stage('Archive') {
@@ -71,7 +71,7 @@ env:
    - name: "tarball_url"
      value: "${tarball_url}"
 EOF"""
-                    sh "curl -H 'Content-Type: application/yaml' --data-binary @payload_file.yaml -k -X POST ${img_build_hook}"
+                    sh "curl -i -H 'Content-Type: application/yaml' --data-binary @payload_file.yaml -k -X POST ${img_build_hook}"
                 }
             }
         }
