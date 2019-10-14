@@ -74,5 +74,6 @@ public class EmptyDisabledTimeoutsMapRetrievalTest
             throws IOException
     {
         writeConfigFile( "conf.d/indexer.conf", "[indexer]\nenabled=false" );
+        writeConfigFile( "conf.d/internal-features.conf", "[_internal]\nstore.validation.enabled=false" );
     }
 }
